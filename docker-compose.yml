@@ -1,0 +1,18 @@
+
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    ports:
+      - 13001:80
+    volumes:
+      - ./audiobooks:/audiobooks
+      - ./podcasts:/podcasts
+      - ./config:/config
+      - ./metadata:/metadata
+    environment:
+      # - TZ=Your/Timezone
+      # - TOKEN_SECRET=your_secret_token_here
+      - ALLOW_CORS=1
+      - HOST=0.0.0.0
+      - PORT=80
+    restart: unless-stopped
